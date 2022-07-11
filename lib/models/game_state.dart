@@ -9,11 +9,11 @@ import 'package:zeldalike/models/world_node.dart';
 
 
 List events = [
-  Event("Event Text 1... Something good happens to you."),
-  Event("Event Text 2... Something bad happens to you."),
-  Event("Event Text 3... Something good and bad happens to you."),
-  Event("Event Text 4... A clown dances in front of you."),
-  Event("Event Text 5... You get lost in a corn maze of twisty little passages, all alike."),
+  Event("Event Text 1... Something good happens to you.", [EventChoice("Okay.", "You found some money.", (GameState s) => s.money += 100)]),
+  Event("Event Text 2... Something bad happens to you.", [EventChoice("Okay.", "You lost some money.", (GameState s) => s.money -= 100)]),
+  Event("Event Text 3... Something good and bad happens to you.", [EventChoice("Good.", "You found some money.", (GameState s) => s.money += 100), EventChoice("Bad.", "You lost some money.", (GameState s) => s.money -= 100)]),
+  Event("Event Text 4... A clown dances in front of you.", [EventChoice("Acknowledge their existence.", "They give you some money.", (GameState s) => s.money += 100)]),
+  Event("Event Text 5... You get lost in a corn maze of twisty little passages, all alike.", [EventChoice("Okay.", "You lost some money.", (GameState s) => s.money -= 100)]),
 ];
 
 List items = <Item>[

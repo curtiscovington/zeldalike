@@ -26,7 +26,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget listView(context) {
     return Consumer<GameState>(
       builder: (context, state, child) {
-        print(state.currentLevel);
+        print(state.money);
         return ListView.builder(
           itemBuilder: (context, index) {
             return mapNodesBuilder(context, index, state);
