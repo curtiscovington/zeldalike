@@ -15,6 +15,7 @@ class _BattleScreenState extends State<BattleScreen> {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Battle Screen'),
             TextButton(onPressed: () {

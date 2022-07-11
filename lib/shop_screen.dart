@@ -15,6 +15,7 @@ class _ShopScreenState extends State<ShopScreen> {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Shop Screen'),
             TextButton(onPressed: () {

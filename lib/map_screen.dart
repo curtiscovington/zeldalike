@@ -5,15 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:zeldalike/models/game_state.dart';
 import 'package:zeldalike/models/scene.dart';
 import 'package:zeldalike/models/world_node.dart';
- 
-// a list of world nodes
-List<List<WorldNode>> worldNodes = [
-  [WorldNode(BattleScene())],
-  [WorldNode(BattleScene()), WorldNode(EventScene())],
-  [WorldNode(BattleScene()), WorldNode(ShopScene())],
-  [WorldNode(BattleScene()), WorldNode(EventScene()), WorldNode(ShopScene())],
-  [WorldNode(BattleScene())],
-];
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -64,10 +55,10 @@ class _MapScreenState extends State<MapScreen> {
                     onPressed: () {
                       if (node.scene != null && state!.currentLevel == index) {
                         // push for result of the scene.getName
-                        Navigator.pushNamed(context, "/${node.scene!.getName()}").then((value) {
+                        Navigator.pushNamed(context, "/${node.scene!.getName()}", arguments: node.scene!.getData()).then((value) {
                           // increase level 
                           state.increaseLevel();
-                          if (state.currentLevel > worldNodes.length - 1) {
+                          if (state.currentLevel > state.worldNodes.length - 1) {
                             state.currentLevel = 0;
                           }
                         });

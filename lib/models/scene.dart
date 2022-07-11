@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zeldalike/models/event.dart';
 
 class Scene {
   Scene() {
@@ -15,6 +16,10 @@ class Scene {
   }
 
   buildScene(BuildContext context) {}
+
+  getData() {
+    return {};
+  }
 }
 
 // battle scene
@@ -55,9 +60,9 @@ class ShopScene extends Scene {
 
 // event scene
 class EventScene extends Scene {
-  EventScene() {
-
-  }
+  Event data;
+  
+  EventScene(this.data);
 
   // get icon method
   @override
@@ -68,5 +73,10 @@ class EventScene extends Scene {
   @override
   String getName() {
     return "event";
+  }
+
+  @override
+  getData() {
+    return data;
   }
 }
