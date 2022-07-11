@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:zeldalike/models/game_state.dart';
 import 'package:zeldalike/models/scene.dart';
 import 'package:zeldalike/models/world_node.dart';
  
@@ -22,18 +24,30 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
 
-  int currentLevel = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(itemBuilder: mapNodesBuilder, itemCount: worldNodes.length),
-    );
+        return Scaffold(
+        body: listView(context),
+        );
+  }
+
+  Widget listView(context) {
+    return Consumer<GameState>(
+      builder: (context, state, child) {
+        print(state.currentLevel);
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            return mapNodesBuilder(context, index, state);
+          },
+          itemCount: state.worldNodes.length,
+        );
+      });
   }
 
 
-  Widget mapNodesBuilder(context, index) {
-    List<WorldNode> nodes = worldNodes[index];
+  Widget mapNodesBuilder(context, index, state) {
+    List<WorldNode> nodes = state.worldNodes[index];
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -42,19 +56,21 @@ class _MapScreenState extends State<MapScreen> {
           for (WorldNode node in nodes)
             Expanded(
               child: Container(
-                color: currentLevel == index ? Colors.blue : Colors.grey,
+                color: state!.currentLevel == index ? Colors.blue : Colors.grey,
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                   child: IconButton(
                     icon: node.scene!.getIcon(),
                     onPressed: () {
-                      if (node.scene != null && currentLevel == index) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => node.scene!.buildScene(context),
-                          ),
-                        );
+                      if (node.scene != null && state!.currentLevel == index) {
+                        // push for result of the scene.getName
+                        Navigator.pushNamed(context, "/${node.scene!.getName()}").then((value) {
+                          // increase level 
+                          state.increaseLevel();
+                          if (state.currentLevel > worldNodes.length - 1) {
+                            state.currentLevel = 0;
+                          }
+                        });
                       }
                     },
                   ),
