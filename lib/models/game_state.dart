@@ -6,6 +6,7 @@ import 'package:zeldalike/models/item.dart';
 import 'package:zeldalike/models/scene.dart';
 import 'package:zeldalike/models/shop.dart';
 import 'package:zeldalike/models/world_node.dart';
+import 'package:zeldalike/factory/item_factory.dart';
 
 
 List events = [
@@ -16,11 +17,22 @@ List events = [
   Event("Event Text 5... You get lost in a corn maze of twisty little passages, all alike.", [EventChoice("Okay.", "You lost some money.", (GameState s) => s.money -= 100)]),
 ];
 
-List items = <Item>[
-  Potion("Health Potion", "Will heal whoever uses it by 50 health.", 50, 100, 50)
-];
 
-Shop shop1 = Shop([InventorySlot(items[0], items[0].getPrice())]);
+// get the items from item factory
+List items = ItemFactory.create();
+
+// generate slots. This probably should be on factory too?
+Shop shop1 = Shop(setInventorySlots(items));
+
+List<InventorySlot> setInventorySlots(items) {
+
+  List<InventorySlot> inventoryslots = [];
+  for (Item item in items) {
+    inventoryslots.add( InventorySlot(item, item.getPrice() ));
+  }
+  return inventoryslots;
+}
+
 
 Event getEvent() {
   return events[Random().nextInt(events.length)];

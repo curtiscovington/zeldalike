@@ -29,3 +29,51 @@ class Potion extends Item {
     e.health = min(e.maxHealth, e.health + health);
   }
 }
+
+class Bow extends Item {
+  int health;
+
+  Bow(String name, String description, int minPrice, int maxPrice, this.health) : super(name, description, minPrice, maxPrice);
+
+  @override
+  void use(Entity e) {
+    e.health = min(e.maxHealth, e.health + health);
+  }
+}
+
+class Boomerang extends Item {
+  int health;
+
+  Boomerang(String name, String description, int minPrice, int maxPrice, this.health) : super(name, description, minPrice, maxPrice);
+
+  @override
+  void use(Entity e) {
+    e.health = min(e.maxHealth, e.health + health);
+  }
+}
+
+class Claw extends Item {
+  int health;
+
+  Claw(String name, String description, int minPrice, int maxPrice, this.health) : super(name, description, minPrice, maxPrice);
+
+  @override
+  void use(Entity e) {
+    e.health = min(e.maxHealth, e.health + health);
+  }
+}
+
+class Wand extends Item {
+  int health;
+
+  Wand(String name, String description, int minPrice, int maxPrice, this.health) : super(name, description, minPrice, maxPrice);
+
+  @override
+  void use(Entity e) {
+    e.health = min(e.maxHealth, e.health + health);
+  }
+}
+
+
+
+
