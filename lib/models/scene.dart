@@ -9,8 +9,11 @@ class Scene {
   }
 
   // get icon method
-  Icon getIcon() {
-    return const Icon(Icons.home);
+  ImageIcon getIcon() {
+    return const ImageIcon(
+      // default icon is battle icon
+      AssetImage("images/swords.png"),
+      size: 20);
   }
 
   String getName() {
@@ -32,9 +35,12 @@ class BattleScene extends Scene {
 
   // get icon method
   @override
-  Icon getIcon() {
-    return const Icon(Icons.alarm);
+  ImageIcon getIcon() {
+    return const ImageIcon(
+      AssetImage("images/swords.png"),
+      size: 20);
   }
+
 
   @override
   String getName() {
@@ -54,8 +60,10 @@ class ShopScene extends Scene {
 
   // get icon method
   @override
-  Icon getIcon() {
-    return const Icon(Icons.store);
+  ImageIcon getIcon() {
+    return const ImageIcon(
+        AssetImage("images/shopping-cart.png"),
+        size: 20);
   }
 
   @override
@@ -76,10 +84,14 @@ class EventScene extends Scene {
   EventScene(this.data);
 
   // get icon method
+  // get icon method
   @override
-  Icon getIcon() {
-    return const Icon(Icons.event_available);
+  ImageIcon getIcon() {
+    return const ImageIcon(
+        AssetImage("images/clapperboard.png"),
+        size: 20);
   }
+
 
   @override
   String getName() {
