@@ -8,6 +8,10 @@ import 'package:zeldalike/models/shop.dart';
 import 'package:zeldalike/models/world_node.dart';
 
 
+// events are things that can happen when a random event occurs
+// they are some colorful text description followed by a list of choices
+// each choice can affect the game state in some way
+// such as giving the player money, stats, maybe adding an item to the inventory
 List events = [
   Event("Event Text 1... Something good happens to you.", [EventChoice("Okay.", "You found some money.", (GameState s) => s.money += 100)]),
   Event("Event Text 2... Something bad happens to you.", [EventChoice("Okay.", "You lost some money.", (GameState s) => s.money -= 100)]),
