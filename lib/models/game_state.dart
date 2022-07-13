@@ -21,7 +21,18 @@ List events = [
 // get the items from item factory
 List items = ItemFactory.create();
 
-Shop shop1 = Shop([InventorySlot(items[0], items[0].getPrice())]);
+// generate slots. This probably should be on factory too?
+Shop shop1 = Shop(setInventorySlots(items));
+
+List<InventorySlot> setInventorySlots(items) {
+
+  List<InventorySlot> inventoryslots = [];
+  for (Item item in items) {
+    inventoryslots.add( InventorySlot(item, item.getPrice() ));
+  }
+  return inventoryslots;
+}
+
 
 Event getEvent() {
   return events[Random().nextInt(events.length)];
