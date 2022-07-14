@@ -23,21 +23,34 @@ class _ShopScreenState extends State<ShopScreen> {
     final args = ModalRoute.of(context)!.settings.arguments as Shop;
     
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Shop"),
-            TextButton(onPressed: () {
-              Navigator.pop(context);
-            }, child: const Text("Done")),
-            Expanded(
-              child: listView(context)
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 40.0, left: 8.0, right: 8.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [              
+                Row(
+                  children: [
+                    Text("Money: "),
+                    moneyText(),
+                  ],
+                ),
+                Expanded(child: listView(context)),
+                TextButton(onPressed: () {
+                Navigator.pop(context);
+              }, child: const Text("Done")),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Widget moneyText() {
+    return Consumer<GameState>(builder: ((context, state, child) => Text(
+      "\$${state.money}",
+      style: TextStyle(fontSize: 20.0),
+    )));
   }
 
   bool isSold (int index) {
