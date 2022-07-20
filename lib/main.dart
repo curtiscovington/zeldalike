@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => GameState()),
+        ChangeNotifierProvider(create: (_) => GameState.instance),
       ],
       
       child: MaterialApp(

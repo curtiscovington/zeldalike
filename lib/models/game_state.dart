@@ -52,6 +52,10 @@ Monster getMonster() {
 }
 
 class GameState extends ChangeNotifier {
+
+  static final GameState _instance = GameState();
+  static GameState get instance => _instance;
+
   int currentLevel = 0;
   List<List<WorldNode>> worldNodes = [
     [WorldNode(BattleScene(Battle(getMonster(), 1)))],
