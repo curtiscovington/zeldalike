@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:zeldalike/models/battle.dart';
+import 'package:zeldalike/models/entity.dart';
 import 'package:zeldalike/models/event.dart';
 import 'package:zeldalike/models/item.dart';
 import 'package:zeldalike/models/scene.dart';
@@ -22,6 +24,9 @@ List events = [
 ];
 
 
+// Monsters
+List<Monster> monsters = MonsterFactory.create();
+
 // get the items from item factory
 List items = ItemFactory.create();
 
@@ -42,17 +47,22 @@ Event getEvent() {
   return events[Random().nextInt(events.length)];
 }
 
+Monster getMonster() {
+  return monsters[Random().nextInt(monsters.length)];
+}
+
 class GameState extends ChangeNotifier {
   int currentLevel = 0;
   List<List<WorldNode>> worldNodes = [
-    [WorldNode(BattleScene())],
-    [WorldNode(BattleScene()), WorldNode(EventScene(getEvent()))],
-    [WorldNode(BattleScene()), WorldNode(ShopScene(shop1))],
-    [WorldNode(BattleScene()), WorldNode(EventScene(getEvent())), WorldNode(ShopScene(shop1))],
-    [WorldNode(BattleScene())],
+    [WorldNode(BattleScene(Battle(getMonster(), 1)))],
+    [WorldNode(BattleScene(Battle(getMonster(), 2))), WorldNode(EventScene(getEvent()))],
+    [WorldNode(BattleScene(Battle(getMonster(), 3))), WorldNode(ShopScene(shop1))],
+    [WorldNode(BattleScene(Battle(getMonster(), 4))), WorldNode(EventScene(getEvent())), WorldNode(ShopScene(shop1))],
+    [WorldNode(BattleScene(Battle(getMonster(), 5)))],
   ];
   Scene? currentScene;
   int money = 0;
+  Player player = Player(100, 100, 10, 10, 10, "Player", "You are a player.");
 
   List inventory = <Item>[];
 
@@ -63,6 +73,11 @@ class GameState extends ChangeNotifier {
 
   void addItemToInventory(Item item) {
     inventory.add(item);
+    notifyListeners();
+  }
+
+  updatePlayerStats(int health, int maxHealth, int attack, int defense, int speed) {
+    player.health = health;
     notifyListeners();
   }
 }

@@ -30,8 +30,8 @@ class Scene {
 // battle scene
 class BattleScene extends Scene {
 
-  Battle data = Battle();
-  BattleScene();
+  Battle data;
+  BattleScene(this.data);
 
   // get icon method
   @override
