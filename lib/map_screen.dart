@@ -15,18 +15,18 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
 
+  bool _gameOver = false;
 
   @override
   Widget build(BuildContext context) {
         return Scaffold(
-        body: listView(context),
+        body: _gameOver ? Center(child: Column(mainAxisAlignment: MainAxisAlignment.center,children: [const Text("Game Over."), TextButton(onPressed: () { Navigator.of(context).pop(); }, child: const Text("Done"))],)) : listView(context),
         );
   }
 
   Widget listView(context) {
     return Consumer<GameState>(
       builder: (context, state, child) {
-        print(state.money);
         return ListView.builder(
           itemBuilder: (context, index) {
             return mapNodesBuilder(context, index, state);
@@ -60,6 +60,9 @@ class _MapScreenState extends State<MapScreen> {
                           state.increaseLevel();
                           if (state.currentLevel > state.worldNodes.length - 1) {
                             state.currentLevel = 0;
+                            setState(() {
+                              _gameOver = true;
+                            });
                           }
                         });
                       }
