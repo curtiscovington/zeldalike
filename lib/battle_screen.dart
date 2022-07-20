@@ -72,9 +72,9 @@ class _BattleScreenState extends State<BattleScreen> {
     // if the monster has a greater speed than the player, the monster will attack first
     if (args.monster.speed > state.player.speed) {
      
-      int damage = args.monster.attackEntity(state.player);
+      String damage = args.monster.attackEntity(state.player);
        setState(() {
-        _battleLog.add("${args.monster.name} attacks for $damage points of damage!");
+        _battleLog.add(damage);
       });
       if (state.player.health <= 0) {
         setState(() {
@@ -82,9 +82,9 @@ class _BattleScreenState extends State<BattleScreen> {
           _battleOver = true;
         });
       } else {
-        int damage = state.player.attackEntity(args.monster);
+        String damage = state.player.attackEntity(args.monster);
         setState(() {
-          _battleLog.add("You attack for $damage points of damage!");
+          _battleLog.add("damage");
         });
         if (args.monster.health <= 0) {
           setState(() {
@@ -97,9 +97,9 @@ class _BattleScreenState extends State<BattleScreen> {
         }
       }
     } else {
-      int damage = state.player.attackEntity(args.monster);
+      String damage = state.player.attackEntity(args.monster);
       setState(() {
-        _battleLog.add("You attack for $damage points of damage!");
+        _battleLog.add(damage);
       });
       if (args.monster.health <= 0) {
         setState(() {
@@ -110,9 +110,9 @@ class _BattleScreenState extends State<BattleScreen> {
           _battleOver = true;
         });
       } else {
-        int damage = args.monster.attackEntity(state.player);
+        String damage = args.monster.attackEntity(state.player);
         setState(() {
-          _battleLog.add("${args.monster.name} attacks for $damage points of damage!");
+          _battleLog.add(damage);
         });
         if (state.player.health <= 0) {
           setState(() {
