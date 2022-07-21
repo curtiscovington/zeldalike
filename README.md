@@ -11,28 +11,34 @@ Curtis Covington
 Tim Coleman     
 
 
-This repo contains Flutter/Dart code to run a Zelda like game as defined in our project proposal [project 5 design](Project_Design_5.pdf): 
+This repo contains Flutter/Dart code to run a Zelda like game as defined in our project proposal [project 5 design](Project_Design_5.pdf): Please notes regarding project 67 submission. 
 
 The main work that has been done thus far is described below. 
 You can find the [current UML class diagram](Project_6_Current_UML_Class_Diagram.pdf) that has been implemented here. 
 
 
+## Project 7 Deliverables
+
+- [Final Report](Final_Report.pdf)
+- [UML Class Diagram Project Final](UML Class Diagram Project Final.pdf)
+- [Record Video](recorded_demo.mp4) 
 
 
-|  Feature |  Done |
+|  Feature |  Comments |
 |---|---|
-| General Flutter Widget Structure | Yes  | 
-| Pattern for observer (using flutter based NotificationListner) | Yes  | 
-| Pattern for factory | Yes  | 
-| Pattern for singleton  | TODO  | 
-| Pattern for command  | TODO  | 
-| UI Store | Yes  | 
-| UI Items | Yes  | 
-| UI Battle | Partial  | 
-| Store Logic | Partial | 
-| Battle Logic | TODO | 
-| Event Logic | Partial |
-| Testing  | TODO  | 
+| General Flutter Widget Structure | Done  | 
+| Pattern for observer (using flutter based NotificationListner) | Done  | 
+| Pattern for factory | Done  | 
+| Pattern for singleton  | Done  | 
+| Pattern for MVC  | Using Flutter UI widgets  |
+| Pattern for command  | Didn't use  | 
+| UI Store | Done  | 
+| UI Items | Done  | 
+| UI Battle | Done  | 
+| Store Logic | Done | 
+| Battle Logic | Done | 
+| Event Logic | Done |
+
 
 Below is a high level breakdown of the classes and subclasses. 
 
@@ -52,6 +58,7 @@ Code compiled and tested with Flutter/Dart
 Dart SDK version: 2.17.5 (stable)
 Tools • Dart 2.17.5 • DevTools 2.12.2
 Tested on Android Nexus 6 Emulator
+
 
 
 ## More FLutter Info Getting Started
