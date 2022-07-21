@@ -20,7 +20,7 @@ You can find the [current UML class diagram](Project_6_Current_UML_Class_Diagram
 ## Project 7 Deliverables
 
 - [Final Report](Final_Report.pdf)
-- [UML Class Diagram Project Final](UML Class Diagram Project Final.pdf)
+- [UML Class Diagram Project Final](UML_Class_Diagram_Project_Final.pdf)
 - [Record Video](recorded_demo.mp4) 
 
 
