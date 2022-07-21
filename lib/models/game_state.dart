@@ -24,7 +24,7 @@ List events = [
 ];
 
 
-// Monsters
+// Monsters from factory
 List<Monster> monsters = MonsterFactory.create();
 
 // get the items from item factory
@@ -53,6 +53,7 @@ Monster getMonster() {
 
 class GameState extends ChangeNotifier {
 
+  // Singleton pattern
   static final GameState _instance = GameState();
   static GameState get instance => _instance;
 
@@ -72,16 +73,19 @@ class GameState extends ChangeNotifier {
 
   void increaseLevel() {
     currentLevel++;
+    // Using Observer pattern to notify
     notifyListeners();
   }
 
   void addItemToInventory(Item item) {
     inventory.add(item);
+    // Using Observer pattern to notify
     notifyListeners();
   }
 
   updatePlayerStats(int health, int maxHealth, int attack, int defense, int speed) {
     player.health = health;
+    // Using Observer pattern to notify
     notifyListeners();
   }
 }
